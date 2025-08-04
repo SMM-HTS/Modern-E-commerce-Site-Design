@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>UpCom Electronics - Console Mods & Repairs</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --orange: #f7931e;
+            --orange-dark: #e07e0c;
+            --black: #121212;
+            --black-light: #222;
+            --gray: #f5f5f5;
+            --white: #fff
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--gray);
+            color: var(--black)
+        }
+
+        a {
+            text-decoration: none
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease
+        }
+
+        .btn-orange {
+            background-color: var(--orange);
+            color: var(--white);
+            border: 1px solid var(--orange)
+        }
+
+        .btn-orange:hover {
+            background-color: var(--orange-dark);
+            border-color: var(--orange-dark)
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--black);
+            border: 1px solid var(--black)
+        }
+
+        .btn-outline:hover {
+            background-color: var(--black);
+            color: var(--white)
+        }
+
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0
+        }
+
+        .logo {
+            height: 40px
+        }
+
+        .main-nav {
+            display: flex;
+            align-items: center
+        }
+
+        .main-nav a {
+            color: var(--black);
+            margin-left: 20px;
+            font-weight: 500;
+            position: relative
+        }
+
+        .main-nav a:hover {
+            color: var(--orange)
+        }
+
+        .main-nav a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--orange);
+            transition: width 0.3s ease
+        }
+
+        .main-nav a:hover:after {
+            width: 100%
+        }
+
+        .nav-icons {
+            display: flex;
+            align-items: center
+        }
+
+        .nav-icons a {
+            color: var(--black);
+            margin-left: 15px;
+            font-size: 20px;
+            position: relative
+        }
+
+        .nav-icons a:hover {
+            color: var(--orange)
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--orange);
+            color: var(--white);
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: 600
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1591488320449-011701bb6704?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            color: var(--white);
+            text-align: center
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 15px
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.9
+        }
+
+        .search-section {
+            padding: 60px 0;
+            background-color: var(--white)
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px
+        }
+
+        .section-title h2 {
+            font-size: 32px;
+            color: var(--black);
+            position: relative;
+            display: inline-block
+        }
+
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--orange)
+        }
+
+        .search-container {
+            max-width: 800px;
+            margin: 0 auto
+        }
+
+        .search-box {
+            display: flex;
+            background-color: var(--white);
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1)
+        }
+
+        .search-box input {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            outline: none;
+            font-size: 16px
+        }
+
+        .search-box button {
+            padding: 0 25px;
+            background-color: var(--orange);
+            color: var(--white);
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease
+        }
+
+        .search-box button:hover {
+            background-color: var(--orange-dark)
+        }
+
+        .filter-section {
+            margin-top: 30px
+        }
+
+        .filter-options {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px
+        }
+
+        .filter-btn {
+            padding: 8px 15px;
+            background-color: var(--gray);
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background-color: var(--orange);
+            color: var(--white);
+            border-color: var(--orange)
+        }
+
+        .products-section {
+            padding: 60px 0
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px
+        }
+
+        .product-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1)
+        }
+
+        .product-img {
+            height: 200px;
+            overflow: hidden;
+            position: relative
+        }
+
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease
+        }
+
+        .product-card:hover .product-img img {
+            transform: scale(1.05)
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: var(--orange);
+            color: var(--white);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600
+        }
+
+        .product-content {
+            padding: 20px
+        }
+
+        .product-category {
+            color: #777;
+            font-size: 14px;
+            margin-bottom: 5px
+        }
+
+        .product-title {
+            margin-bottom: 10px;
+            font-weight: 600
+        }
+
+        .product-price {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px
+        }
+
+        .current-price {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--black)
+        }
+
+        .old-price {
+            font-size: 16px;
+            color: #999;
+            text-decoration: line-through;
+            margin-left: 10px
+        }
+
+        .discount {
+            color: var(--orange);
+            font-weight: 600;
+            margin-left: 10px
+        }
+
+        .product-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+            margin-top: 15px
+        }
+
+        .product-rating {
+            color: var(--orange)
+        }
+
+        .product-sold {
+            color: #777;
+            font-size: 14px
+        }
+
+        .services-section {
+            padding: 60px 0;
+            background-color: var(--white)
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px
+        }
+
+        .service-card {
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 8px;
+            background-color: var(--gray);
+            transition: all 0.3s ease
+        }
+
+        .service-card:hover {
+            background-color: var(--orange);
+            color: var(--white);
+            transform: translateY(-5px)
+        }
+
+        .service-card:hover .service-icon {
+            color: var(--white)
+        }
+
+        .service-icon {
+            font-size: 40px;
+            color: var(--orange);
+            margin-bottom: 20px;
+            transition: all 0.3s ease
+        }
+
+        .service-title {
+            margin-bottom: 15px;
+            font-weight: 600
+        }
+
+        .service-desc {
+            font-size: 14px;
+            opacity: 0.8
+        }
+
+        .testimonials-section {
+            padding: 60px 0
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px
+        }
+
+        .testimonial-card {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative
+        }
+
+        .testimonial-card:before {
+            content: '\201C';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 60px;
+            color: rgba(0, 0, 0, 0.05);
+            font-family: serif
+        }
+
+        .testimonial-content {
+            margin-bottom: 20px;
+            font-style: italic;
+            position: relative;
+            z-index: 1
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center
+        }
+
+        .author-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px
+        }
+
+        .author-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover
+        }
+
+        .author-info h4 {
+            font-weight: 600;
+            margin-bottom: 5px
+        }
+
+        .author-info p {
+            font-size: 14px;
+            color: #777
+        }
+
+        .newsletter-section {
+            padding: 60px 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            color: var(--white);
+            text-align: center
+        }
+
+        .newsletter-container {
+            max-width: 600px;
+            margin: 0 auto
+        }
+
+        .newsletter-form {
+            display: flex;
+            margin-top: 30px
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            outline: none;
+            font-size: 16px
+        }
+
+        .newsletter-form button {
+            padding: 0 25px;
+            background-color: var(--orange);
+            color: var(--white);
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            transition: background-color 0.3s ease
+        }
+
+        .newsletter-form button:hover {
+            background-color: var(--orange-dark)
+        }
+
+        footer {
+            background-color: var(--black-light);
+            color: var(--white);
+            padding: 60px 0 20px
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px
+        }
+
+        .footer-col h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px
+        }
+
+        .footer-col h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--orange)
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+            list-style: none
+        }
+
+        .footer-links a {
+            color: #bbb;
+            transition: color 0.3s ease
+        }
+
+        .footer-links a:hover {
+            color: var(--orange)
+        }
+
+        .footer-contact p {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            color: #bbb
+        }
+
+        .footer-contact i {
+            margin-right: 10px;
+            color: var(--orange);
+            margin-top: 3px
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--white);
+            transition: all 0.3s ease
+        }
+
+        .social-links a:hover {
+            background-color: var(--orange);
+            transform: translateY(-3px)
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bbb;
+            font-size: 14px
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 24px;
+            cursor: pointer
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 80%;
+            max-width: 300px;
+            height: 100vh;
+            background-color: var(--white);
+            z-index: 1000;
+            transition: left 0.3s ease;
+            overflow-y: auto;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1)
+        }
+
+        .mobile-menu.active {
+            left: 0
+        }
+
+        .mobile-menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #eee
+        }
+
+        .mobile-menu-close {
+            font-size: 24px;
+            cursor: pointer
+        }
+
+        .mobile-nav {
+            display: flex;
+            flex-direction: column;
+            padding: 20px
+        }
+
+        .mobile-nav a {
+            padding: 12px 0;
+            color: var(--black);
+            border-bottom: 1px solid #eee
+        }
+
+        .mobile-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease
+        }
+
+        .mobile-overlay.active {
+            opacity: 1;
+            visibility: visible
+        }
+
+        @media(max-width:992px) {
+            .hero h1 {
+                font-size: 40px
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr))
+            }
+        }
+
+        @media(max-width:768px) {
+            .hero {
+                height: 400px
+            }
+
+            .hero h1 {
+                font-size: 32px
+            }
+
+            .hero p {
+                font-size: 16px
+            }
+
+            .main-nav {
+                display: none
+            }
+
+            .mobile-menu-btn {
+                display: block
+            }
+
+            .section-title h2 {
+                font-size: 28px
+            }
+
+            .newsletter-form {
+                flex-direction: column
+            }
+
+            .newsletter-form input {
+                border-radius: 4px;
+                margin-bottom: 10px
+            }
+
+            .newsletter-form button {
+                border-radius: 4px;
+                padding: 15px
+            }
+        }
+
+        @media(max-width:576px) {
+            .hero {
+                height: 350px
+            }
+
+            .hero h1 {
+                font-size: 28px
+            }
+
+            .btn {
+                padding: 8px 15px
+            }
+
+            .section-title h2 {
+                font-size: 24px
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0
+            }
+
+            to {
+                opacity: 1
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease forwards
+        }
+
+        .slide-up {
+            animation: slideUp 0.5s ease forwards
+        }
+
+        .delay-1 {
+            animation-delay: 0.2s
+        }
+
+        .delay-2 {
+            animation-delay: 0.4s
+        }
+
+        .delay-3 {
+            animation-delay: 0.6s
+        }
+
+        .delay-4 {
+            animation-delay: 0.8s
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container header-container"><a href="#" class="logo"><img style="width: 100px;"
+                    src="/logo.jpg" alt="UpCom Electronics"></a>
+            <nav class="main-nav"><a href="#">Home</a><a href="#">Shop</a><a href="#">Services</a><a
+                    href="#">About</a><a href="#">Contact</a></nav>
+            <div class="nav-icons"><a href="#"><i class="fas fa-search"></i></a><a href="#"><i
+                        class="fas fa-user"></i></a><a href="#"><i class="fas fa-shopping-cart"></i><span
+                        class="cart-count">3</span></a></div>
+            <div class="mobile-menu-btn"><i class="fas fa-bars"></i></div>
+        </div>
+    </header>
+    <div class="mobile-menu">
+        <div class="mobile-menu-header"><img src="https://via.placeholder.com/120x40?text=UpCom"
+                alt="UpCom Electronics">
+            <div class="mobile-menu-close"><i class="fas fa-times"></i></div>
+        </div>
+        <nav class="mobile-nav"><a href="#">Home</a><a href="#">Shop</a><a href="#">Services</a><a href="#">About</a><a
+                href="#">Contact</a></nav>
+    </div>
+    <div class="mobile-overlay"></div>
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="slide-up">Premium Console Mods & Repairs</h1>
+            <p class="slide-up delay-1">Expert modifications and repairs for all gaming consoles and electronics</p>
+            <div class="slide-up delay-2"><a href="#" class="btn btn-orange">Shop Now</a><a href="#"
+                    class="btn btn-outline">Our Services</a></div>
+        </div>
+    </section>
+    <section class="search-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Find Your Product</h2>
+            </div>
+            <div class="search-container">
+                <div class="search-box"><input type="text" placeholder="Search for products..."><button><i
+                            class="fas fa-search"></i></button></div>
+                <div class="filter-section">
+                    <div class="filter-options"><button class="filter-btn active">All</button><button
+                            class="filter-btn">PS5</button><button class="filter-btn">Xbox</button><button
+                            class="filter-btn">Switch</button><button class="filter-btn">PC</button><button
+                            class="filter-btn">Accessories</button></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="products-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Featured Products</h2>
+            </div>
+            <div class="products-grid">
+                <div class="product-card fade-in">
+                    <div class="product-img"><img
+                            src="https://images.unsplash.com/photo-1607853202273-797f1c22a38e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                            alt="PS5 Controller">
+                        <div class="product-badge">New</div>
+                    </div>
+                    <div class="product-content"><span class="product-category">Controllers</span>
+                        <h3 class="product-title">Custom PS5 Controller</h3>
+                        <div class="product-price"><span class="current-price">$89.99</span><span
+                                class="old-price">$109.99</span><span class="discount">18% off</span></div>
+                        <div class="product-meta">
+                            <div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star-half-alt"></i><span>(24)</span></div>
+                            <div class="product-sold">128 sold</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card fade-in delay-1">
+                    <div class="product-img"><img
+                            src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                            alt="Xbox Controller">
+                        <div class="product-badge">Bestseller</div>
+                    </div>
+                    <div class="product-content"><span class="product-category">Controllers</span>
+                        <h3 class="product-title">Xbox Elite Wireless Controller</h3>
+                        <div class="product-price"><span class="current-price">$149.99</span></div>
+                        <div class="product-meta">
+                            <div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="far fa-star"></i><span>(42)</span></div>
+                            <div class="product-sold">256 sold</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card fade-in delay-2">
+                    <div class="product-img"><img
+                            src="https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                            alt="Nintendo Switch">
+                        <div class="product-badge">Sale</div>
+                    </div>
+                    <div class="product-content"><span class="product-category">Consoles</span>
+                        <h3 class="product-title">Nintendo Switch OLED Model</h3>
+                        <div class="product-price"><span class="current-price">$349.99</span><span
+                                class="old-price">$399.99</span><span class="discount">12% off</span></div>
+                        <div class="product-meta">
+                            <div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><span>(87)</span></div>
+                            <div class="product-sold">512 sold</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align:center;margin-top:40px"><a href="#" class="btn btn-orange">View All Products</a>
+            </div>
+        </div>
+    </section>
+    <section class="services-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon"><i class="fas fa-tools"></i></div>
+                    <h3 class="service-title">Console Repairs</h3>
+                    <p class="service-desc">Expert repairs for all gaming consoles including PS5, Xbox Series X, and
+                        Nintendo Switch.</p>
+                </div>
+                <div class="service-card fade-in delay-1">
+                    <div class="service-icon"><i class="fas fa-paint-brush"></i></div>
+                    <h3 class="service-title">Custom Mods</h3>
+                    <p class="service-desc">Custom paint jobs, LED mods, and performance enhancements for your devices.
+                    </p>
+                </div>
+                <div class="service-card fade-in delay-2">
+                    <div class="service-icon"><i class="fas fa-microchip"></i></div>
+                    <h3 class="service-title">Component Replacement</h3>
+                    <p class="service-desc">High-quality replacement parts for controllers, consoles, and other
+                        electronics.</p>
+                </div>
+                <div class="service-card fade-in delay-3">
+                    <div class="service-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3 class="service-title">Warranty Services</h3>
+                    <p class="service-desc">Extended warranty options and manufacturer warranty claim assistance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Customer Reviews</h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-content">"UpCom Electronics fixed my PS5 in less than 24 hours when no one
+                        else could. Their service is fast and reliable!"</div>
+                    <div class="testimonial-author">
+                        <div class="author-img"><img src="https://randomuser.me/api/portraits/men/32.jpg" alt="John D.">
+                        </div>
+                        <div class="author-info">
+                            <h4>John D.</h4>
+                            <p>PS5 Owner</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card fade-in delay-1">
+                    <div class="testimonial-content">"The custom Xbox controller I ordered is amazing. The build quality
+                        is superb and it arrived earlier than expected."</div>
+                    <div class="testimonial-author">
+                        <div class="author-img"><img src="https://randomuser.me/api/portraits/women/44.jpg"
+                                alt="Sarah M."></div>
+                        <div class="author-info">
+                            <h4>Sarah M.</h4>
+                            <p>Xbox Gamer</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card fade-in delay-2">
+                    <div class="testimonial-content">"Great customer service and fair pricing. They diagnosed my Switch
+                        issue accurately and fixed it for half what Nintendo quoted."</div>
+                    <div class="testimonial-author">
+                        <div class="author-img"><img src="https://randomuser.me/api/portraits/men/75.jpg"
+                                alt="Michael T."></div>
+                        <div class="author-info">
+                            <h4>Michael T.</h4>
+                            <p>Nintendo Fan</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-container">
+                <h2 class="slide-up">Subscribe to Our Newsletter</h2>
+                <p class="slide-up delay-1">Get the latest updates on new products, special offers, and repair tips.</p>
+                <form class="newsletter-form slide-up delay-2"><input type="email" placeholder="Your email address"
+                        required><button type="submit">Subscribe</button></form>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>UpCom Electronics</h3>
+                    <p style="margin-top:15px;color:#bbb">Premium console modifications and electronic repair services
+                        with fast turnaround times and exceptional quality.</p>
+                    <div class="social-links"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i
+                                class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a
+                            href="#"><i class="fab fa-youtube"></i></a></div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Shop</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Customer Service</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">My Account</a></li>
+                        <li><a href="#">Order Tracking</a></li>
+                        <li><a href="#">Warranty</a></li>
+                        <li><a href="#">Returns & Exchanges</a></li>
+                        <li><a href="#">FAQs</a></li>
+                    </ul>~
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <div class="footer-contact">
+                        <p><i class="fas fa-map-marker-alt"></i>123 Tech Street, Silicon Valley, CA 94000</p>
+                        <p><i class="fas fa-phone-alt"></i>+1 (555) 123-4567</p>
+                        <p><i class="fas fa-envelope"></i>support@upcomelectronics.com</p>
+                        <p><i class="fas fa-clock"></i>Mon-Fri: 9AM - 6PM</p>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+
+            </div>
+        </div>
+    </footer>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script>document.addEventListener('DOMContentLoaded', function () { const mobileMenuBtn = document.querySelector('.mobile-menu-btn'); const mobileMenuClose = document.querySelector('.mobile-menu-close'); const mobileMenu = document.querySelector('.mobile-menu'); const mobileOverlay = document.querySelector('.mobile-overlay'); mobileMenuBtn.addEventListener('click', function () { mobileMenu.classList.add('active'); mobileOverlay.classList.add('active'); document.body.style.overflow = 'hidden' }); mobileMenuClose.addEventListener('click', function () { mobileMenu.classList.remove('active'); mobileOverlay.classList.remove('active'); document.body.style.overflow = '' }); mobileOverlay.addEventListener('click', function () { mobileMenu.classList.remove('active'); mobileOverlay.classList.remove('active'); document.body.style.overflow = '' }); const filterBtns = document.querySelectorAll('.filter-btn'); filterBtns.forEach(btn => { btn.addEventListener('click', function () { filterBtns.forEach(b => b.classList.remove('active')); this.classList.add('active') }) }); const productCards = document.querySelectorAll('.product-card'); productCards.forEach(card => { card.addEventListener('click', function (e) { if (!e.target.classList.contains('btn') && !e.target.closest('.btn')) { window.location.href = 'product-detail.html' } }) }); const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('animate') } }), { threshold: 0.1 }); document.querySelectorAll('.fade-in, .slide-up').forEach(el => { observer.observe(el) }) });</script>
+</body>
+
+</html>
